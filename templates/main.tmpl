@@ -53,7 +53,7 @@ locals {
   prefix                 = join("-", var.prefix)
   prefix_safe            = lower(join("", var.prefix))
   suffix                 = join("-", var.suffix)
-  suffix_unique          = join("-", concat(var.suffix, [local.random]))
+  suffix_unique          = local.random == "" ? local.suffix : join("-", concat(var.suffix, [local.random]))
   suffix_safe            = lower(join("", var.suffix))
   suffix_unique_safe     = lower(join("", concat(var.suffix, [local.random])))
   // Names based in the recomendations of
